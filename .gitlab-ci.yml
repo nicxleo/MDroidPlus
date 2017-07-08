@@ -13,15 +13,15 @@ stages:
   - test
   - build
 
-testGVT:
+testMDroidPlus:
   stage: test
   script:
     - 'mvn $MAVEN_CLI_OPTS test'
 
-BuildGVT:
+BuildMDroidPlus:
   stage: build
   script:
     - 'mvn $MAVEN_CLI_OPTS -Dmaven.test.skip=true package'
   artifacts:
     paths:
-    - target/MDroidPlus-1.0.0.jar
+    - target/*.jar
