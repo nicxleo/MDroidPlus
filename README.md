@@ -20,7 +20,9 @@ MDroidPlus is a collaborative research effort between the SEMERU group at Willia
 For more information please visit: http://android-mutation.com
 
 ### Cite
-If you use MDroidPlus for academic purposes, please cite: Linares-Vásquez, M., Bavota, G., Tufano, M., Moran, K., Di Penta, M., Vendome, C., Bernal-Cárdenas, C., and Poshyvanyk, D., _“Enabling Mutation Testing for Android Apps”_, in Proceedings of 11th Joint Meeting of the European Software Engineering Conference and the 25th ACM SIGSOFT International Symposium on the Foundations of Software Engineering (ESEC/FSE’17), Paderborn, Germany, September 4-8, 2017, to appear 12 pages (24.4% acceptance ratio)
+If you use MDroidPlus for academic purposes, please cite: 
+
+Linares-Vásquez, M., Bavota, G., Tufano, M., Moran, K., Di Penta, M., Vendome, C., Bernal-Cárdenas, C., and Poshyvanyk, D., _“Enabling Mutation Testing for Android Apps”_, in Proceedings of 11th Joint Meeting of the European Software Engineering Conference and the 25th ACM SIGSOFT International Symposium on the Foundations of Software Engineering (ESEC/FSE’17), Paderborn, Germany, September 4-8, 2017, to appear 12 pages (24.4% acceptance ratio)
 
 # Compile
 Download and compile MDroidPlus with the following commands:
