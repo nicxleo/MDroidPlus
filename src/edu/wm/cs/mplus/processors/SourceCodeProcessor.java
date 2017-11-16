@@ -30,6 +30,7 @@ import edu.wm.cs.mplus.detectors.code.visitors.MethodCallVO;
 import edu.wm.cs.mplus.detectors.code.visitors.MethodDeclarationVO;
 import edu.wm.cs.mplus.model.MutationType;
 import edu.wm.cs.mplus.model.location.MutationLocation;
+import edu.wm.cs.mplus.operators.OperatorBundle;
 
 public class SourceCodeProcessor {
 
@@ -43,19 +44,21 @@ public class SourceCodeProcessor {
 	private List<String> serializableClasses;
 	private List<String> parcelableClasses;
 
+	private OperatorBundle operatorBundle;
 
 	private static SourceCodeProcessor instance = null;
 
 
 	public static SourceCodeProcessor getInstance() {
 		if(instance == null) {
-			instance = new SourceCodeProcessor();
+			instance = new SourceCodeProcessor(null);
 		}
 		return instance;
 	}
 
 
-	public SourceCodeProcessor(){
+	public SourceCodeProcessor(OperatorBundle operatorBundle){
+		this.operatorBundle = operatorBundle;
 		targetApis = new HashSet<String>();
 		targetDeclarations = new HashSet<String>();
 		targetApisAndMutypes = new HashMap<>();
@@ -79,8 +82,12 @@ public class SourceCodeProcessor {
 		String apiCalls = null;
 
 		for (String type : types) {
+			//Add only target calls for selected operators
+			if(!operatorBundle.isOperatorSelected(type)) {
+				continue;
+			}
+			
 			apiCalls = bundle.getString(type);
-
 			String[] calls = apiCalls.split(",");
 
 			for(String apiCall : calls){
@@ -101,6 +108,11 @@ public class SourceCodeProcessor {
 		Set<String> types = bundle.keySet();
 		String methodDeclarations = null;
 		for (String type : types) {
+			//Add only declarations for selected operators
+			if(!operatorBundle.isOperatorSelected(type)) {
+				continue;
+			}
+			
 			methodDeclarations = bundle.getString(type);
 			
 			String[] declarations = methodDeclarations.split(",");
@@ -183,7 +195,13 @@ public class SourceCodeProcessor {
 	}
 
 
-	private static void addSerializableOrParcelableLocations(List<String> classes, MutationType type, HashMap<MutationType, List<MutationLocation>> locations){
+	private void addSerializableOrParcelableLocations(List<String> classes, MutationType type, HashMap<MutationType, List<MutationLocation>> locations){
+		
+		//Add only target calls for selected operators
+		if(!operatorBundle.isOperatorSelected(type.getId()+"")) {
+			return;
+		}
+		
 		if(classes.size() > 0){
 			List<MutationLocation> newLocations = new ArrayList<MutationLocation>();
 			for(String path : classes){
@@ -415,17 +433,6 @@ public class SourceCodeProcessor {
 
 	public List<String> getParcelableClasses() {
 		return parcelableClasses;
-	}
-
-
-	public static void main(String[] args){
-		SourceCodeProcessor processor = new SourceCodeProcessor();
-		//processor.processFile("/Users/mariolinares/Documents/academy/SEMERU/Code-tools/Q-Extractor/examples4test/BugReportDAO.java");
-		//processor.processFolder("/Users/semeru/Documents/Mario/Academy/My-Papers/2016/ICSE17-MuDroid/test",
-				//"/Users/semeru/Documents/Mario/Academy/Code-projects/SEMERU/MPlus/libs4ast");
-
-
-
 	}
 
 }
