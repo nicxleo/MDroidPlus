@@ -35,7 +35,7 @@ public class WrongStringResourceDetector extends TextBasedDetector {
 		int currentLine = 0;
 		while( (line = reader.readLine() ) != null){
 	
-			if( line.contains("<string")){
+			if( line.contains("<string ")){
 				startLine = currentLine;
 				isStringTag  = true;
 			}
