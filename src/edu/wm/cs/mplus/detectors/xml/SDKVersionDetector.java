@@ -47,9 +47,14 @@ public class SDKVersionDetector extends TextBasedDetector {
 			NamedNodeMap attrMap = node.getAttributes();
 			// Loop through attributes
 			for (int j = 0; j < attrMap.getLength(); j++) {
-					// Get all sdk version
-					sdkVersion.add(attrMap.item(j).getNodeName());
+				String nodeName = attrMap.item(j).getNodeName();
+				// Get all sdk version
+				if(nodeName.equals("android:minSdkVersion") || 
+						nodeName.equals("android:targetSdkVersion") ||
+						nodeName.equals("android:maxSdkVersion")){
 
+					sdkVersion.add(nodeName);
+				}
 			}
 		}
 
@@ -59,7 +64,7 @@ public class SDKVersionDetector extends TextBasedDetector {
 		int startCol = 0;
 		int endCol = 0;
 		int lineNum = 0; 
-		
+
 		boolean isActivityTag = false;
 		int currentLine = 0;
 		while ((line = reader.readLine()) != null) {
@@ -97,8 +102,8 @@ public class SDKVersionDetector extends TextBasedDetector {
 		location.setType(this.getType());
 		location.setLine(lineNum);
 		return location;
-		
-		
+
+
 	}
 
 }
