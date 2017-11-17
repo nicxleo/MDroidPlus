@@ -47,22 +47,22 @@ public class OperatorBundle {
 
 	public List<MutationLocationDetector> getTextBasedDetectors() {
 		List<MutationLocationDetector> textBasedDetectors = new ArrayList<>();
-
+		
 		if(bundle.containsKey(TextBasedOperator.ActivityNotDefined.id+"")) {
 			textBasedDetectors.add(new ActivityNotDefinedDetector());
-		} else if(bundle.containsKey(TextBasedOperator.InvalidActivityName.id+"")) {
+		} if(bundle.containsKey(TextBasedOperator.InvalidActivityName.id+"")) {
 			textBasedDetectors.add(new InvalidActivityNameDetector());
-		} else if(bundle.containsKey(TextBasedOperator.InvalidColor.id+"")) {
+		} if(bundle.containsKey(TextBasedOperator.InvalidColor.id+"")) {
 			textBasedDetectors.add(new InvalidColorDetector());
-		} else if(bundle.containsKey(TextBasedOperator.InvalidLabel.id+"")) {
+		} if(bundle.containsKey(TextBasedOperator.InvalidLabel.id+"")) {
 			textBasedDetectors.add(new InvalidLabelDetector());
-		} else if(bundle.containsKey(TextBasedOperator.MissingPermission.id+"")) {
+		} if(bundle.containsKey(TextBasedOperator.MissingPermission.id+"")) {
 			textBasedDetectors.add(new MissingPermissionDetector());
-		} else if(bundle.containsKey(TextBasedOperator.WrongStringResource.id+"")) {
+		} if(bundle.containsKey(TextBasedOperator.WrongStringResource.id+"")) {
 			textBasedDetectors.add(new WrongStringResourceDetector());
-		} else if(bundle.containsKey(TextBasedOperator.SDKVersion.id+"")) {
+		} if(bundle.containsKey(TextBasedOperator.SDKVersion.id+"")) {
 			textBasedDetectors.add(new SDKVersionDetector());
-		} else if(bundle.containsKey(TextBasedOperator.WrongMainActivity.id+"")) {
+		} if(bundle.containsKey(TextBasedOperator.WrongMainActivity.id+"")) {
 			textBasedDetectors.add(new WrongMainActivityDetector());
 		}
 
