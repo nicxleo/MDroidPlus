@@ -37,13 +37,13 @@ The generated runnable jar can be found in: ``MDroidPlus/target/MDroidPlus-1.0.0
 # Usage
 To run MDroidPlus use the following command, specifying the required arguments:
 ```
-java -jar MDroidPlus-1.0.0.jar <libs4ast> <AppSourceCode> <AppName> <Output> <operatorsDir> <multithread>
+java -jar MDroidPlus-1.0.0.jar <libs4ast> <AppSourceCode> <AppPackage> <Output> <operatorsDir> <multithread>
 ```
 ### Arguments
 Provide the following list of required arguments when running MDroidPlus: 
 1. ``libs4ast``:  path of the lib4ast folder (``MDroidPlus/lib4ast/``);
 2. ``AppSourceCode``: path of the Android app source code folder;
-3. ``AppName``: name of the Android app;
+3. ``AppPackage``: App main package name;
 4. ``Output``: path of the folder where the mutantns will be created;
 5. ``operatorsDir``: path to the folder containing the operators.properties.
 6. ``multithread`` : true or false, specifying whether the mutant generation should be multithreaded or not.
