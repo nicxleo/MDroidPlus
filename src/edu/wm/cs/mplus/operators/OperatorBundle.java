@@ -19,21 +19,22 @@ import edu.wm.cs.mplus.detectors.xml.MissingPermissionDetector;
 import edu.wm.cs.mplus.detectors.xml.SDKVersionDetector;
 import edu.wm.cs.mplus.detectors.xml.WrongMainActivityDetector;
 import edu.wm.cs.mplus.detectors.xml.WrongStringResourceDetector;
+import edu.wm.cs.mplus.model.MutationType;
 
 public class OperatorBundle {
 
 	private static final String PROPERTY_FILE_NAME = "operators";
 	private ResourceBundle bundle;
 
-	public enum TextBasedOperator {
-		ActivityNotDefined(1), InvalidActivityName(3), InvalidColor(3), InvalidLabel(28), MissingPermission(9), WrongStringResource(10), SDKVersion(12), WrongMainActivity(8);
-
-		public int id;
-
-		TextBasedOperator(int id) {
-			this.id = id;
-		}
-	}
+//	public enum TextBasedOperator {
+//		ActivityNotDefined(1), InvalidActivityName(3), InvalidColor(3), InvalidLabel(28), MissingPermission(9), WrongStringResource(10), SDKVersion(12), WrongMainActivity(8);
+//
+//		public int id;
+//
+//		TextBasedOperator(int id) {
+//			this.id = id;
+//		}
+//	}
 
 	public OperatorBundle(String propertyDir) {
 		init(propertyDir);
@@ -48,21 +49,22 @@ public class OperatorBundle {
 	public List<MutationLocationDetector> getTextBasedDetectors() {
 		List<MutationLocationDetector> textBasedDetectors = new ArrayList<>();
 		
-		if(bundle.containsKey(TextBasedOperator.ActivityNotDefined.id+"")) {
+		
+		if(bundle.containsKey(MutationType.ACTIVITY_NOT_DEFINED.getId()+"")) {
 			textBasedDetectors.add(new ActivityNotDefinedDetector());
-		} if(bundle.containsKey(TextBasedOperator.InvalidActivityName.id+"")) {
+		} if(bundle.containsKey(MutationType.INVALID_ACTIVITY_PATH.getId()+"")) {
 			textBasedDetectors.add(new InvalidActivityNameDetector());
-		} if(bundle.containsKey(TextBasedOperator.InvalidColor.id+"")) {
+		} if(bundle.containsKey(MutationType.INVALID_COLOR.getId()+"")) {
 			textBasedDetectors.add(new InvalidColorDetector());
-		} if(bundle.containsKey(TextBasedOperator.InvalidLabel.id+"")) {
+		} if(bundle.containsKey(MutationType.INVALID_LABEL.getId()+"")) {
 			textBasedDetectors.add(new InvalidLabelDetector());
-		} if(bundle.containsKey(TextBasedOperator.MissingPermission.id+"")) {
+		} if(bundle.containsKey(MutationType.MISSING_PERMISSION_MANIFEST.getId()+"")) {
 			textBasedDetectors.add(new MissingPermissionDetector());
-		} if(bundle.containsKey(TextBasedOperator.WrongStringResource.id+"")) {
+		} if(bundle.containsKey(MutationType.WRONG_STRING_RESOURCE.getId()+"")) {
 			textBasedDetectors.add(new WrongStringResourceDetector());
-		} if(bundle.containsKey(TextBasedOperator.SDKVersion.id+"")) {
+		} if(bundle.containsKey(MutationType.SDK_VERSION.getId()+"")) {
 			textBasedDetectors.add(new SDKVersionDetector());
-		} if(bundle.containsKey(TextBasedOperator.WrongMainActivity.id+"")) {
+		} if(bundle.containsKey(MutationType.WRONG_MAIN_ACTIVITY.getId()+"")) {
 			textBasedDetectors.add(new WrongMainActivityDetector());
 		}
 

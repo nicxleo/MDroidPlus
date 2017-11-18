@@ -82,6 +82,8 @@ public class SourceCodeProcessor {
 		String apiCalls = null;
 
 		for (String type : types) {
+			System.out.println(MutationType.valueOf(Integer.parseInt(type)).getName()+ ": "+operatorBundle.isOperatorSelected(type));
+			
 			//Add only target calls for selected operators
 			if(!operatorBundle.isOperatorSelected(type)) {
 				continue;
@@ -108,6 +110,9 @@ public class SourceCodeProcessor {
 		Set<String> types = bundle.keySet();
 		String methodDeclarations = null;
 		for (String type : types) {
+			
+			System.out.println(MutationType.valueOf(Integer.parseInt(type)).getName()+ ": "+operatorBundle.isOperatorSelected(type));
+
 			//Add only declarations for selected operators
 			if(!operatorBundle.isOperatorSelected(type)) {
 				continue;
