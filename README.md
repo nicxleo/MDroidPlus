@@ -15,7 +15,7 @@ MDroidPlus implements 35 mutation operators specifically for Android apps, cover
 The complete list of mutation operators and their specification is available at the [MDroidPlus website](http://android-mutation.com/#operators).
 Given an Android App, MDroidPlus first extracts the Potential Fault Profile (PFP) and then automatically seeds mutants generating mutated copies of the App.
 
-MDroidPlus is a collaborative research effort between the SEMERU group at William & Mary, the University of Lugano, and the University of Sannio.
+MDroidPlus is a collaborative research effort between the SEMERU group at William & Mary,the Universidad de los Andes (Colombia), the University of Lugano, and the University of Sannio.
 
 For more information please visit: http://android-mutation.com
 
@@ -52,7 +52,7 @@ Mutation operators can be selected or deselected editing the ``operators.propert
 ### Example
 ```
 cd MDroidPlus
-java -jar target/MDroidPlus-1.0.0.jar libs4ast/ /tmp/AppFoo/ AppFoo /tmp/mutants/ . true
+java -jar target/MDroidPlus-1.0.0.jar libs4ast/ /tmp/AppFoo/src/ AppFoo /tmp/mutants/ . true
 ```
 
 ### Output
@@ -61,4 +61,4 @@ The mutants folders are named with the corresponding mutant ID (i.e., numerical 
 
 
 # Future Work
-We plan to release a new version of MDroidPlus with improved APIs in October.
+- Include PIT and Major operators
