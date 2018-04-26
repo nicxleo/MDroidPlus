@@ -138,7 +138,7 @@ public class SourceCodeProcessor {
 		HashMap<MutationType, List<MutationLocation>> locations = new HashMap<>();
 		Collection<File> files = FileUtils.listFiles(new File(folderPath), TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE);
 		for (File file : files) {
-			if(file.getName().endsWith(".java") && file.getCanonicalPath().contains(packageName.replace(".", "/")) && !file.getName().contains("EmmaInstrumentation.java") && !file.getName().contains("FinishListener.java") && !file.getName().contains("InstrumentedActivity.java") && !file.getName().contains("SMSInstrumentedReceiver.java")){
+			if(file.getName().endsWith(".java") && file.getCanonicalPath().contains(packageName.replace(".", File.separator)) && !file.getName().contains("EmmaInstrumentation.java") && !file.getName().contains("FinishListener.java") && !file.getName().contains("InstrumentedActivity.java") && !file.getName().contains("SMSInstrumentedReceiver.java")){
 				HashMap<MutationType, List<MutationLocation>> fileLocations = processFile(file.getAbsolutePath(), folderPath, binariesFolder);
 				System.out.println(file.getAbsolutePath());
 				appendLocations(fileLocations, locations);
